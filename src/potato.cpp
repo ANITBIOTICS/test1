@@ -1,5 +1,21 @@
 #include "main.h"
 
+int speedcap (int speed){
+
+    if(speed > 100) {
+        return 100;
+    }
+
+    else if(speed <-100){
+        return -100;
+    }
+
+    else {
+        return speed;
+    }
+}
+
+
 
 double inchconverter (double inches){
     int gearratio = 1;
@@ -55,7 +71,7 @@ void drivencoder (int distance, double kp){
         if(abs(error)<10){
             integral+=error;
         }
-        Powerdrive (error*kp + integral*kI+derivative*kD,0);
+        Powerdrive (speedcap(error*kp + integral*kI+derivative*kD),0);
         delay(20);
     }
     Powerdrive(0,0);
@@ -80,7 +96,7 @@ void imuturn (int degrees, double kp){
         error = degrees - inertial.get_rotation();
         derivative = error - past_error;
         error = degrees - inertial.get_rotation();
-        Powerdrive (0,error*kp + integral*kI+derivative*kD);
+        Powerdrive (0,speedcap(error*kp + integral*kI+derivative*kD));
          delay(20);
     }
     Powerdrive(0,0);
