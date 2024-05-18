@@ -85,6 +85,14 @@ void imuturn (int degrees, double kp){
     }
     Powerdrive(0,0);
 }
-
+//Left1 Right1
    
+void setbrake () {
+    Left1.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+    Right1.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+} 
 
+void unbrake () {
+    Left1.set_brake_mode(E_MOTOR_BRAKE_COAST);
+    Right1.set_brake_mode(E_MOTOR_BRAKE_COAST);
+} 
