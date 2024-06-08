@@ -71,7 +71,7 @@ void drivencoder (int distance, double kp){
         if(abs(error)<10){
             integral+=error;
         }
-        Powerdrive (speedcap(error*kp + integral*kI+derivative*kD),0);
+        Powerdrive (speedcap(    + integral*kI+derivative*kD),0);
         delay(20);
     }
     Powerdrive(0,0);
