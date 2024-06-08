@@ -98,7 +98,7 @@ void imuturn (int degrees, double kp){
         error = degrees - inertial.get_rotation();
         Powerdrive (0,speedcap(error*kp + integral*kI+derivative*kD));
          delay(20);
-    }
+    } 
     Powerdrive(0,0);
 }
 //Left1 Right1
